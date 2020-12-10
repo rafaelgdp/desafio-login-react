@@ -23,19 +23,19 @@ Autor: Rafael Pontes
 #### Registro
 - Método POST
 - Corpo esperado: {nome, email, senha, cpf, nascimento, naturalidade, nacionalidade}
-- Rota: <URL>:<PORTA>/api/user/registrar
+- Rota: URL:PORTA/api/user/registrar
 
 #### Login
 - Método POST
 - Corpo esperado: {cpf, senha}
-- Rota: <URL>:<PORTA>/api/user/login
+- Rota: URL:PORTA/api/user/login
 
 #### Consome dados do usuário
 - Método GET
 - Cabeçalho (headers) esperado: { authorization: 'Bearer JWTTOKEN' }
-- Rota: <URL>:<PORTA>/api/user
+- Rota: URL:PORTA/api/user
 
 #### Edita dados do usuário
 - Método POST
 - Corpo esperado: { token: JWTTOKEN,  user: {nome, email, senha, cpf, nascimento, naturalidade, nacionalidade}}
-- Rota: <URL>:<PORTA>/api/user
+- Rota: URL:PORTA/api/user
