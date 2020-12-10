@@ -80,7 +80,8 @@ module.exports = {
     },
     
     async login(req, res) {
-        const user = await UserService.getUserByCPF(req.body.cpf);
+        const cpf = req.body.cpf.replace(/\D/g,'');
+        const user = await UserService.getUserByCPF(cpf);
         if (!user) res.status(404).send("Usuário não encontrado.");
         const result = await bcrypt.compare(req.body.senha, user.hashsenha);
         if (!result) res.status(401).send("Senha incorreta.");
