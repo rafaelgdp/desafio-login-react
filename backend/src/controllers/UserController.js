@@ -5,6 +5,7 @@ const validador = require('../utils/validation');
 const UserService = require('../services/UserService');
 const jwt = require('jsonwebtoken');
 const { validateCompleteUserFields } = require('../services/UserService');
+const validation = require('../utils/validation')
 
 module.exports = {
 
@@ -63,12 +64,14 @@ module.exports = {
     
     async getUser (req, res) {
 
-        const token = req.body.token;
+        const token = req.headers.authorization.split(' ')[1];
         jwt.verify(token, process.env.secret, async function(err, decoded) {
             if (err) return res.status(500).send("Erro de autenticação.");
             try {
                 const tokenId = decoded._id
                 let user = await User.findOne({_id: tokenId});
+                user.hashsenha = null;
+                delete user.hashsenha;
                 return res.send(user);
             } catch (err) {
                 return res.status(500).send("Usuário não encontrado.");
@@ -114,7 +117,7 @@ module.exports = {
                     }
                 })
                 
-                if (reqUser.hasOwnProperty('senha')) {
+                if (reqUser.hasOwnProperty('senha') && validation.validarSenha(reqUser.senha)) {
                     user.hashsenha = await bcrypt.hash(reqUser.senha, 10);
                 }
 

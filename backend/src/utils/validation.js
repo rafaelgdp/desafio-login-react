@@ -12,5 +12,8 @@ module.exports = {
     },
     validarCPF(cpf) {
         return validadorCPF.validate(cpf);
+    },
+    validarSenha(senha) {
+        return senha.length >= 3;
     }
 }

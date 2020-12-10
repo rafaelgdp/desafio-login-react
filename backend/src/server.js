@@ -20,12 +20,14 @@ app.use(express.json());
 app.use(cors());
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "localhost"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
 // Rotas
-app.use(require('./routes/routes'));
+const router = require('./routes/routes');
+app.use(router);
+app.use('/api', router);
 
-app.listen(8080);
+app.listen(3333);

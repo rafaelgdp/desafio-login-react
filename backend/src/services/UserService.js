@@ -24,7 +24,7 @@ module.exports = {
     validateCompleteUserFields(user) {
         return  validation.validarCPF(user.cpf) &&
                 validation.validarEmail(user.email) &&
-                validation.validarData(user.nascimento);
+                validation.validarData(user.nascimento)
     }
 
 };
