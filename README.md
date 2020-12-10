@@ -32,10 +32,10 @@ Autor: Rafael Pontes
 
 #### Consome dados do usuário
 - Método GET
-- Cabeçalho (headers) esperado: { authorization: 'Bearer <JWTTOKEN>' }
+- Cabeçalho (headers) esperado: { authorization: 'Bearer JWTTOKEN' }
 - Rota: <URL>:<PORTA>/api/user
 
 #### Edita dados do usuário
 - Método POST
-- Corpo esperado: { token: <JWTTOKEN>,  user: {nome, email, senha, cpf, nascimento, naturalidade, nacionalidade}}
+- Corpo esperado: { token: JWTTOKEN,  user: {nome, email, senha, cpf, nascimento, naturalidade, nacionalidade}}
 - Rota: <URL>:<PORTA>/api/user
